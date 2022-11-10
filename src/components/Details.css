@@ -1,0 +1,198 @@
+.GamePage_game__MtgUg {
+    box-sizing: border-box;
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.GamePage_gamepageContent__AOiKM {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+}
+
+.GamePage_gameInfo__Idxne {
+    justify-content: space-between;
+    width: 28%;
+    color: #ccc;
+}
+
+.GamePage_aboutBottom__EiJNM,
+.GamePage_about__hFtme,
+.GamePage_gameInfo__Idxne {
+    display: flex;
+    flex-direction: column;
+}
+
+.GamePage_aboutBottomClosed__GXMf1,
+.GamePage_aboutBottom__EiJNM {
+    background-color: #262626;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 110%;
+}
+
+.GamePage_closed__5iX2\+ {
+    display: none;
+}
+
+.GamePage_aboutTop__lZAwm {
+    background-color: #1a1a1a;
+    border: 1px transparent;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-sizing: border-box;
+    height: 280px;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 30px 70px 30px 34px;
+    width: 110%;
+}
+
+.GamePage_aboutBottomClosed__GXMf1 {
+    box-sizing: border-box;
+    height: 59px;
+    padding: 20px 35px 20px 34px;
+}
+
+.GamePage_aboutTop__lZAwm p {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.65;
+    word-spacing: 2px;
+}
+
+.GamePage_aboutBottom__EiJNM {
+    -webkit-animation: GamePage_opening__FNFFt .5s ease-in-out forwards;
+    animation: GamePage_opening__FNFFt .5s ease-in-out forwards;
+    box-sizing: border-box;
+    height: 270px;
+    padding: 30px 35px 20px 34px;
+}
+
+.GamePage_buttonHovered__tymaP,
+.GamePage_buttonNotHovered__9C8R7 {
+    align-items: center;
+    align-self: flex-end;
+    background-color: initial;
+    border: 1px transparent;
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+    font-size: 1.2em;
+    gap: 4px;
+    justify-content: flex-end;
+    transition: all .2s;
+    width: 20%;
+    color: #ccc;
+}
+
+.carousel-inner {
+    border-radius: 20px;
+}
+
+.coverino {
+    background-size: contain !important;
+    height: 700px;
+}
+
+/* about botton */
+.aboutBottom {
+    background-color: #1A1A1A;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 30px 70px 30px 34px;
+    height: 570px;
+    width: 110%;
+    box-sizing: border-box;
+    animation: opening 0.5s ease-in-out forwards;
+}
+
+.aboutBottomClosed {
+    background-color: #1A1A1A;
+    border: 1px transparent;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-sizing: border-box;
+    height: 280px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 30px 70px 30px 34px;
+    width: 110%;
+}
+
+.GamePage_addToCart__EGEGX {
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    width: 110%;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .block {
+        display: block !important;
+    }
+
+    .GamePage_gameInfo__Idxne {
+        padding-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header-details {
+        display: block;
+        padding: 0;
+    }
+
+    .coverino,
+    .carousel-inner {
+        height: auto;
+    }
+
+    .aboutBottom,
+    .aboutBottomClosed {
+        padding: 5px;
+    }
+
+
+    .aboutBottom,
+    .aboutBottomClosed,
+    .GamePage_aboutTop__lZAwm,
+    .GamePage_aboutBottomClosed__GXMf1 {
+        width: 100%;
+    }
+
+
+    .details-name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        padding-bottom: 20px;
+    }
+
+    .GamePage_addToCart__EGEGX {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 98%;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+}
