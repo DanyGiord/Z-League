@@ -1,23 +1,23 @@
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
-import Carousel from 'react-bootstrap/Carousel'
-import './Details.css'
+import Carousel from "react-bootstrap/Carousel";
+import "./Details.css";
 
-
-export default function Detail() {
+export default function Detail(handleClick, game) {
   const { id } = useParams();
   const [details, setDetails] = useState("");
   const [movies, setMovies] = useState("");
-  const [extended, setExtended] = useState("")
+  const [extended, setExtended] = useState("");
   const API_KEY = "096cc99894964f3288aa6409f834a1ad";
 
-  // detail 
+  // detail
   useEffect(() => {
     const getDetails = async () => {
       try {
-        const response = await fetch(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`);
+        const response = await fetch(
+          `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
+        );
         const data = await response.json();
         setDetails(data);
       } catch (err) {
@@ -41,14 +41,15 @@ export default function Detail() {
       document.getElementById("21").className = "aboutBottomClosed";
     }
     setExtended(!extended);
-  }
-
+  };
 
   // Trailer
   useEffect(() => {
     const getMovies = async () => {
       try {
-        const response = await fetch(`https://api.rawg.io/api/games/${id}/movies?key=${API_KEY}`);
+        const response = await fetch(
+          `https://api.rawg.io/api/games/${id}/movies?key=${API_KEY}`
+        );
         const data = await response.json();
         setMovies(data.results[0].data.max);
         console.log(movies);
@@ -61,20 +62,32 @@ export default function Detail() {
   console.log(details);
 
   return (
-
     <div data-aos="fade-right" data-aos-delay="400">
       {/* <img src={details.background_image} alt="" /> */}
-      <div className="header-details " data-aos="fade-down" data-aos-delay="500">
-        <BsArrowLeft className="arrow-back" style={{ marginLeft: "20px" }} onClick={() => navigateHome()} />
+      <div
+        className="header-details "
+        data-aos="fade-down"
+        data-aos-delay="500"
+      >
+        <BsArrowLeft
+          className="arrow-back"
+          style={{ marginLeft: "20px" }}
+          onClick={() => navigateHome()}
+        />
         <h1 className="details-name">{details.name}</h1>
       </div>
 
-
-
-      <div className=".GamePage_game__MtgUg block" style={{ display: "flex", justifyContent: "space-around" }} data-aos="fade-right" data-aos-delay="800">
-
-        <Carousel style={{ maxWidth: "1150px", borderRadius: "20px" }} className="container">
-          <Carousel.Item >
+      <div
+        className=".GamePage_game__MtgUg block"
+        style={{ display: "flex", justifyContent: "space-around" }}
+        data-aos="fade-right"
+        data-aos-delay="800"
+      >
+        <Carousel
+          style={{ maxWidth: "1150px", borderRadius: "20px" }}
+          className="container"
+        >
+          <Carousel.Item>
             <img
               className="d-block w-100 coverino"
               src={details.background_image}
@@ -88,31 +101,27 @@ export default function Detail() {
               alt="Second slide"
             />
           </Carousel.Item>
-
         </Carousel>
 
-
         <div className="GamePage_gameInfo__Idxne container ">
-          <div className="GamePage_about__hFtme" >
-            <div className="GamePage_aboutTop__lZAwm" id="21"  >
+          <div className="GamePage_about__hFtme">
+            <div className="GamePage_aboutTop__lZAwm" id="21">
               <h2 className="bold text-white ">About</h2>
-              <p >{details.description_raw}</p>
+              <p>{details.description_raw}</p>
               <hr />
-              <h4>Genres: {details && details.genres.map((g) => `${g.name} | `)}</h4>
+              <h4>
+                Genres: {details && details.genres.map((g) => `${g.name} | `)}
+              </h4>
               <hr />
-              <a href={details.metacritic_url} style={{ color: "#18FFAC" }}>Metacritic</a>
+              <a href={details.metacritic_url} style={{ color: "#18FFAC" }}>
+                Metacritic
+              </a>
               <br />
               <a href={details.website}>{details.name}</a>
             </div>
             <div className="undefined GamePage_aboutBottomClosed__GXMf1 ">
-              <div style={{ opacity: "1", transform: "none" }} >
-
-                <div className="GamePage_closed__5iX2+">
-                  <a href="">cao</a>
-                  <h4>asd</h4>
-                  <h4>asd</h4>
-                  <h4>asd</h4>
-                </div>
+              <div style={{ opacity: "1", transform: "none" }}>
+                <div className="GamePage_closed__5iX2+"></div>
               </div>
               <button
                 id="20"
@@ -124,9 +133,18 @@ export default function Detail() {
               </button>
             </div>
           </div>
-          <div className="GamePage_addToCart__EGEGX" data-aos="fade-in" data-aos-delay="1000">
-            <h2>59,99 $</h2>
-            <button className="game-card-button">ADD TO CART</button>
+          <div
+            className="GamePage_addToCart__EGEGX"
+            data-aos="fade-in"
+            data-aos-delay="500"
+          >
+            <h2>{details.metacritic} &euro; </h2>
+            <button
+              className="game-card-button"
+              onClick={() => handleClick(game)}
+            >
+              ADD TO CART
+            </button>
           </div>
         </div>
       </div>

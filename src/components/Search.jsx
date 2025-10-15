@@ -33,7 +33,11 @@ function Search({ count, inputValue }) {
           placeholder={`Search ${count} games`}
         ></input>
         {mark ? (
-          <FontAwesomeIcon className="xmark-icon" icon={faXmark} onClick={deleteInput} />
+          <FontAwesomeIcon
+            className="xmark-icon"
+            icon={faXmark}
+            onClick={deleteInput}
+          />
         ) : null}
       </form>
     </div>

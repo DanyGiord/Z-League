@@ -11,23 +11,20 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faN } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
-import priceList from '../price.js'
+import { useState } from "react";
 
-
-function Game({ id, name, image, genres, platforms, metacriticScore, released, handleClick, game }) {
+function Game({
+  id,
+  name,
+  image,
+  genres,
+  platforms,
+  metacriticScore,
+  released,
+  handleClick,
+  game,
+}) {
   const [infoHover, setInfoHover] = useState(false);
-  const [prices, setPrices] = useState([])
-
-  useEffect(() => {
-    setPrices(priceList)
-  }, []);
-
-  console.log(priceList[Math.floor(Math.random() * 6)]);
-
-
-
-
 
   return (
     <div id={id} className="game" data-aos="fade-up" data-aos-delay="300">
@@ -39,7 +36,7 @@ function Game({ id, name, image, genres, platforms, metacriticScore, released, h
         <div className="game-img">
           <img src={image} alt={name}></img>
           {infoHover ? (
-            <Link to={`/games/${id}`}>
+            <Link to={`/games/${id}`} game={game}>
               <button className="more-btn">More Details</button>
             </Link>
           ) : null}
@@ -47,9 +44,14 @@ function Game({ id, name, image, genres, platforms, metacriticScore, released, h
 
         <div className="game-info">
           <div className="price">
-            <button className="game-card-button" onClick={() => handleClick(game)}>Add to cart</button>
+            <button
+              className="game-card-button"
+              onClick={() => handleClick(game)}
+            >
+              Add to cart
+            </button>
 
-            <span >23,99 $ { } </span>
+            <span> {game.metacritic} &euro;</span>
           </div>
 
           <div>
@@ -64,23 +66,51 @@ function Game({ id, name, image, genres, platforms, metacriticScore, released, h
                 );
               } else if (p.platform.slug === "pc") {
                 return (
-                  <FontAwesomeIcon key={index} icon={faWindows} style={{ marginRight: "4px" }} />
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faWindows}
+                    style={{ marginRight: "4px" }}
+                  />
                 );
               } else if (p.platform.slug === "xbox") {
-                return <FontAwesomeIcon key={index} icon={faXbox} style={{ marginRight: "4px" }} />;
+                return (
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faXbox}
+                    style={{ marginRight: "4px" }}
+                  />
+                );
               } else if (p.platform.slug === "nintendo") {
-                return <FontAwesomeIcon key={index} icon={faN} style={{ marginRight: "4px" }} />;
+                return (
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faN}
+                    style={{ marginRight: "4px" }}
+                  />
+                );
               } else if (p.platform.slug === "ios") {
                 return (
-                  <FontAwesomeIcon key={index} icon={faApple} style={{ marginRight: "4px" }} />
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faApple}
+                    style={{ marginRight: "4px" }}
+                  />
                 );
               } else if (p.platform.slug === "android") {
                 return (
-                  <FontAwesomeIcon key={index} icon={faAndroid} style={{ marginRight: "4px" }} />
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faAndroid}
+                    style={{ marginRight: "4px" }}
+                  />
                 );
               } else if (p.platform.slug === "linux") {
                 return (
-                  <FontAwesomeIcon key={index} icon={faLinux} style={{ marginRight: "4px" }} />
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faLinux}
+                    style={{ marginRight: "4px" }}
+                  />
                 );
               }
             })}
@@ -93,7 +123,9 @@ function Game({ id, name, image, genres, platforms, metacriticScore, released, h
             <ul className="game-info-about">
               <li className="genres">
                 <span>Genres:</span>
-                <span className="genres-info">{genres.map((g) => `${g.name} | `)}</span>
+                <span className="genres-info">
+                  {genres.map((g) => `${g.name} | `)}
+                </span>
               </li>
               <hr />
               <li className="released-date">
@@ -102,7 +134,9 @@ function Game({ id, name, image, genres, platforms, metacriticScore, released, h
               </li>
               <hr />
               <CircularProgressbar
-                className={metacriticScore == null ? "hidden" : "metacriticScore"}
+                className={
+                  metacriticScore == null ? "hidden" : "metacriticScore"
+                }
                 styles={buildStyles({
                   textSize: "30px",
                   backgroundColor: "#322f35",
@@ -120,11 +154,9 @@ function Game({ id, name, image, genres, platforms, metacriticScore, released, h
                 backgroundPadding={6}
               />
             </ul>
-
           ) : (
             ""
           )}
-
         </div>
 
         {/* <CircularProgressbar

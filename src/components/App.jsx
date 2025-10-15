@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
-import Detail from './Detail';
-import Signup from './Signup';
+import Detail from "./Detail";
+import Signup from "./Signup";
 import Cart from "./Cart";
 import Success from "./Success";
 
@@ -23,4 +23,3 @@ function App() {
 }
 
 export default App;
-

@@ -1,7 +1,11 @@
-import { faAngleRight, faAnglesRight, faAngleLeft, faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleRight,
+  faAnglesRight,
+  faAngleLeft,
+  faAnglesLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-
 
 const Pagination = ({ pageClick, count, currentPage }) => {
   let totalPage = Math.ceil(count / 20);
@@ -19,11 +23,18 @@ const Pagination = ({ pageClick, count, currentPage }) => {
 
   for (let i = firstPage; i <= lastPage; i++) {
     paginationHtml.push(
-      <li className={currentPage === i ? "page-item active" : "page-item"} key={i}>
-        <Link to={"/"} className="page-link pageNum" onClick={(event) => pageClick(i)}>
+      <li
+        className={currentPage === i ? "page-item active" : "page-item"}
+        key={i}
+      >
+        <Link
+          to={"/"}
+          className="page-link pageNum"
+          onClick={(event) => pageClick(i)}
+        >
           {i}
         </Link>
-      </li >
+      </li>
     );
   }
 
@@ -66,7 +77,7 @@ const Pagination = ({ pageClick, count, currentPage }) => {
           </li>
         </ul>
       </nav>
-    </div >
+    </div>
   );
 };
 

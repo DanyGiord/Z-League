@@ -1,94 +1,96 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    letter-spacing: 2px;
-    font-family: 'GT Medium', sans-serif;
-    font-weight: bold;
+  letter-spacing: 2px;
+  font-family: "GT Medium", sans-serif;
+  font-weight: bold;
 }
 
 h2 {
-    display: flex;
-    padding: 10px;
-    font-size: 2rem;
-    font-weight: bold;
+  display: flex;
+  padding: 10px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 ol,
 ul {
-    padding-left: 0rem !important;
+  padding-left: 0rem !important;
 }
 
 li {
-    padding: 5px;
-    list-style: none;
-    display: flex;
-    align-items: flex;
+  padding: 5px;
+  list-style: none;
+  display: flex;
+  align-items: flex;
 }
 
 p {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 .category p {
-    padding-top: 6px;
+  padding-top: 6px;
 }
 
 .SideBar {
-    background-color: #151515;
-    color: #fff;
-    width: 250px;
-    position: fixed;
-    height: 0px;
-    margin-top: 150px;
-    z-index: 999999;
-    margin-left: 40px;
+  background-color: #151515;
+  color: #fff;
+  width: 250px;
+  position: fixed;
+  height: 0px;
+  margin-top: 150px;
+  z-index: 999999;
+  margin-left: 40px;
 }
 
-
 .btn-category {
-    padding: 5px;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #262626;
-    width: 50px;
-    height: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #262626;
+  width: 50px;
+  height: 40px;
 }
 
 .btn-category:hover {
-    color: #262626 !important;
-    background-color: #fff;
-    cursor: pointer;
+  color: #262626 !important;
+  background-color: #fff;
+  cursor: pointer;
 }
-
-
-
-
-/* @media (max-width: 1500px) {
-    .SideBar {
-        display: none;
-    }
-} */
 
 @media only screen and (max-width: 600px) {
-    .SideBar {
-        width: 40vw;
-        height: 100vh;
-        background-color: #1b1a1a;
-        top: 107px;
-        box-shadow: 14px 9px 15px -6px rgba(0, 0, 0, 0.75);
-        margin: 0;
-        transition: 0.5s ease-in-out all;
-    }
+  .SideBar {
+    width: 40vw;
+    height: 100vh;
+    background-color: #1b1a1a;
+    top: 107px;
+    box-shadow: 14px 9px 15px -6px rgba(0, 0, 0, 0.75);
+    margin: 0;
+    transition: 0.5s ease-in-out all;
+  }
 }
 
-@media only screen and (min-width: 1200px) {
-    .hamburger-react {
-        display: none;
-    }
+@media only screen and (max-width: 768px) {
+  .SideBar {
+    width: 40vw;
+    height: 100vh;
+    background-color: #1b1a1a;
+    top: 107px;
+    box-shadow: 14px 9px 15px -6px rgba(0, 0, 0, 0.75);
+    margin: 0;
+    transition: 0.5s ease-in-out all;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hamburger-react {
+    display: none;
+  }
 }
 
 /* 320px

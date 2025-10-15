@@ -7,8 +7,6 @@ import Pagination from "./Pagination";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-
-
 function Home() {
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("");
@@ -17,23 +15,37 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [slug, setSlug] = useState("");
   const [sideState, setSideState] = useState(false);
-  const [selectedGenres, setSelectedGenres] = useState("")
-  const [selectedPlatform, setSelectedPlatform] = useState("")
-  const [isOpen, setOpen] = useState(false)
-  const [currentPlatform, setCurrentPlatform] = useState("")
-
+  const [selectedGenres, setSelectedGenres] = useState("");
+  const [selectedPlatform, setSelectedPlatform] = useState("");
+  const [isOpen, setOpen] = useState(false);
+  const [currentPlatform, setCurrentPlatform] = useState("");
   const [cart, setCart] = useState([]);
+  const [show, setShow] = useState(true);
+  const [warning, setWarning] = useState(false);
 
   const handleClick = (game) => {
-    setCart([...cart, game])
-    console.log(cart)
-  }
+    let isPresent = false;
+    cart.forEach((product) => {
+      if (game.id === product.id) isPresent = true;
+    });
 
-  const genres_url = selectedGenres.length > 0 ? `&genres=${selectedGenres}` : ''
-  const platforms_url = selectedPlatform.length > 0 ? `&parent_platforms=${selectedPlatform}` : ''
-  console.log(genres_url)
-  console.log(platforms_url)
+    if (isPresent) {
+      setWarning(true);
+      setTimeout(() => {
+        setWarning(false);
+      }, 2000);
+      return;
+    }
+    setCart([...cart, game]);
+    console.log(cart);
+  };
 
+  const genres_url =
+    selectedGenres.length > 0 ? `&genres=${selectedGenres}` : "";
+  const platforms_url =
+    selectedPlatform.length > 0 ? `&parent_platforms=${selectedPlatform}` : "";
+  console.log(genres_url);
+  console.log(platforms_url);
 
   const API_KEY = "096cc99894964f3288aa6409f834a1ad";
 
@@ -53,20 +65,19 @@ function Home() {
     }
   };
 
-
   function pageMove(page) {
     setCurrentPage(page);
   }
 
   function inputValue(value) {
     setSlug(value);
-    console.log(value)
+    console.log(value);
   }
 
   function homeClick(event) {
     event.preventDefault();
     setSlug("");
-    setCategory("")
+    setCategory("");
     toggle();
     setCurrentPage(1);
   }
@@ -74,11 +85,11 @@ function Home() {
   function headerHomeClick(event) {
     event.preventDefault();
     setSlug("");
-    setCategory("")
+    setCategory("");
     setCurrentPage(1);
-    setSelectedGenres("")
-    setCurrentPlatform("")
-    setSelectedPlatform("")
+    setSelectedGenres("");
+    setCurrentPlatform("");
+    setSelectedPlatform("");
   }
 
   /* api empty query parameter */
@@ -93,10 +104,16 @@ function Home() {
 
   useEffect(() => {
     getGames();
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     // console.log(currentPage);
-  }, [currentPage, slug, category, selectedGenres, selectedPlatform, currentPlatform]);
-
+  }, [
+    currentPage,
+    slug,
+    category,
+    selectedGenres,
+    selectedPlatform,
+    currentPlatform,
+  ]);
 
   function toggle() {
     setSideState((prev) => !prev);
@@ -126,38 +143,44 @@ function Home() {
         setSelectedPlatform={setSelectedPlatform}
         setCurrentPlatform={setCurrentPlatform}
         setSlug={setSlug}
+        size={cart.length}
+        setCart={setCart}
+        setShow={setShow}
+        cart={cart}
+        warning={warning}
       />
       <div className="home container">
         {loading ? (
           <div className="loading">
             <h1>Loading...</h1>
             <div className="fa-3x">
-              <FontAwesomeIcon icon={faSpinner} spin style={{ color: "white" }} />
+              <FontAwesomeIcon
+                icon={faSpinner}
+                spin
+                style={{ color: "white" }}
+              />
             </div>
           </div>
         ) : (
           <h2 className="main-title" data-aos="fade-up">
-
             {(function () {
               if (slug !== "") {
-                return `${slug} results...`
+                return `${slug} results...`;
               } else if (selectedGenres.length > 0) {
-                return `${selectedGenres.charAt(0).toUpperCase() + selectedGenres.slice(1).toLowerCase()}`
+                return `${
+                  selectedGenres.charAt(0).toUpperCase() +
+                  selectedGenres.slice(1).toLowerCase()
+                }`;
               } else if (currentPlatform.length > 0) {
-                return `${currentPlatform}`
+                return `${currentPlatform}`;
               }
-            }())}
-
-            {/* {slug !== "" ? `${slug} results...` : `${selectedGenres.charAt(0).toUpperCase() + selectedGenres.slice(1).toLowerCase()}` 
-            ? `${selectedGenres.charAt(0).toUpperCase() + selectedGenres.slice(1).toLowerCase()}` : currentPlatform} */}
+            })()}
           </h2>
-
         )}
         <main>
-
           <div className="game-container">
             {games.map((game) => {
-              console.log(game)
+              // console.log(game)
               return (
                 <Game
                   key={game.id}
@@ -173,16 +196,23 @@ function Home() {
                 />
               );
             })}
-
           </div>
         </main>
         {loading ? null : (
-          <Pagination smooth pageClick={pageMove} count={count} currentPage={currentPage} />
+          <Pagination
+            smooth
+            pageClick={pageMove}
+            count={count}
+            currentPage={currentPage}
+          />
         )}
       </div>
 
-      <ScrollToTop smooth color="#28FFB1" style={{ backgroundColor: 'rgba(59, 59, 59)' }} />
-
+      <ScrollToTop
+        smooth
+        color="#28FFB1"
+        style={{ backgroundColor: "rgba(59, 59, 59)" }}
+      />
     </div>
   );
 }
